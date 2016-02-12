@@ -1,5 +1,6 @@
 class Comment
-  # post_date is an array of integers [day, month, year]
+
+  @@comment_list = []
 
   attr_reader :user, :body, :age
   
@@ -7,11 +8,12 @@ class Comment
     @user = user
     @body = body
     @age = age
+
+    @@comment_list << self
   end
 
-  # def age
-  #   post_date = Date.civil(@post_date[2], @post_date[1], @post_date[0])
-  #   age = (Date.today - post_date).to_i
-  # end
+  def self.all 
+    @@comment_list
+  end
 
 end
